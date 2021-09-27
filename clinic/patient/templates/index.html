@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="{%static 'css/style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+            crossorigin="anonymous"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{%url 'home' %}">Medilife</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{%url 'home'%}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{%url 'signup'%}">Register</a>
+                </li>
+
+                {%if request.user.is_authenticated%}
+                <li class="nav-item">
+                    <a class="nav-link" href="{%url 'signout'%}">Signout</a>
+                </li>
+                {%else%}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{%url 'signin'%}">Signin</a>
+                </li>
+                {%endif%}
+                <li class="nav-item">
+                    <a class="nav-link" href="{%url 'msg'%}">
+
+                        notification(
+                        <span class="text-danger">
+                            {%if request.user.is_authenticated%}
+<!--                        {{notifications|length}}-->
+                            {{total_notifications}}
+                            {%else%}
+                            0
+                            {%endif%}
+
+
+                    </span>)
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <br>
+    {%block body_block%}
+
+    {%endblock%}
+    <br>
+</div>
+<hr>
+<br>
+<div class="container">
+    <div class="row ">
+        <div class="col-lg-4 ">
+            <h2>Office Time</h2>
+            <ul class="list">
+                <li>Monday - Tuesday: 10 Am - 10pm</li>
+                <li>Wednesday -Thursday: 10 Am - 10pm</li>
+                <li>Friday - Saturday: 10 Am - 10pm</li>
+                <li>Sunday: not available</li>
+            </ul>
+        </div>
+        <div class="col-lg-4 ">
+            <h2>Contact</h2>
+            <ul class="list">
+                <li>ak@gmail.com</li>
+                <li>+91 9977884455</li>
+
+            </ul>
+        </div>
+        <div class="col-lg-4 ">
+            <h2>Medilife</h2>
+            <p class="text-justify">When we play it safe, we sabotage our chance to make our mark in a memorable,
+                authentic way. Health care
+                organizations confront pressures to provide more responsive, personal care with cost efficiency,
+                striving to provide the industry’s “patient-centered care” goal.</p>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

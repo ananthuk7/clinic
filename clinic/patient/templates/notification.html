@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{%extends 'index.html'%}
+{%block body_block%}
+<div class="container">
+    {%for notification in notifications%}
+        <div class="col-lg-4 mx-auto">
+            <p> {{notification.message}}</p>
+            <p>date :{{notification.date}}</p>
+            <p>reporting time: {{notification.reporting_time}}</p>
+        </div>
+    {%endfor%}
+
+</div>
+
+
+
+
+{%endblock%}

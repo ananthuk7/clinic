@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{%extends 'main.html' %}
+
+{%block body_block%}
+<table class="table">
+    <tr>
+        <th>name</th>
+        <th>age</th>
+        <th>gender</th>
+        <th>specialized</th>
+        <th>sheduletime</th>
+        <th colspan="2" class="text-center">Actions</th>
+    </tr>
+     {%for doctor in doctors%}
+    <tr>
+
+        <td>{{doctor.name}}</td>
+        <td>{{doctor.age}}</td>
+        <td>{{doctor.gender}}</td>
+        <td>{{doctor.specialized}}</td>
+        <td>{{doctor.sheduletime}}</td>
+        <td><a href="{%url 'editdoctor' doctor.id%}" class="btn btn-success w-100">edit</a></td>
+        <td><a href="{%url 'deletedoctor' doctor.id%}" class="btn btn-danger w-100">delete</a></td>
+
+    </tr>
+    {%endfor%}
+</table>
+{%endblock%}

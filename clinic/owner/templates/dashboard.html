@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{%extends 'main.html' %}
+
+{%block body_block%}
+<br>
+<br>
+<div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne">
+            Total Appoiments {{appoinments|length}}
+        </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+         data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            <table class="table">
+                <tr>
+                    <td>Doctors</td>
+                    <td>User</td>
+                    <td>Phone</td>
+                    <td>Address</td>
+                    <td>Send message</td>
+                </tr>
+                {%for appoinment in appoinments%}
+                <tr>
+                    <td>{{appoinment.doctors}}</td>
+                    <td>{{appoinment.user}}</td>
+                    <td>{{appoinment.phone}}</td>
+                    <td>{{appoinment.address}}</td>
+                    <td><a href="{%url 'message' appoinment.id%}" class="btn btn-success">Send Message</a></td>
+                </tr>
+                {%endfor%}
+            </table>
+        </div>
+    </div>
+</div>
+{%endblock%}
